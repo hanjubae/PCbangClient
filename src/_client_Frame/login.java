@@ -12,12 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
 import Admin_viewHUD.Seat_pan;
@@ -45,16 +42,23 @@ public class login extends JFrame implements ActionListener {
 	public login() {
 
 		setBounds(100, 100, 1620, 900);
-		setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("mainHud_back.png"))));	//exe파일 실행 시 이미지가 깨지지 않도록 하는 코드
+		setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("mainHud_back.png")))); // exe파일
+																												// 실행
+																												// 시
+																												// 이미지가
+																												// 깨지지
+																												// 않도록
+																												// 하는
+																												// 코드
 
 		setBackground(Color.black);
 		setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	// 윈도우창을 닫으면 프로세스까지 종료!(완전종료)
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 윈도우창을 닫으면 프로세스까지
+														// 종료!(완전종료)
 
 		// 첫번째 panel = 텍스트필드 tf, tf2 들어감.
-		
 
-		JPanel Leftpanel = new JPanel();	//좌석그림이 들어갈 판넬
+		JPanel Leftpanel = new JPanel(); // 좌석그림이 들어갈 판넬
 		Leftpanel.setBounds(10, 100, 1200, 700);
 		Leftpanel.setLayout(new GridLayout(5, 10));
 		Leftpanel.setOpaque(false);
@@ -67,10 +71,10 @@ public class login extends JFrame implements ActionListener {
 
 		}
 
-		loginCheck();	//서버에서 받아온 좌석별 로그인 정보를 가져와서 로그인 여부를 표시만 해주는 함수
+		loginCheck(); // 서버에서 받아온 좌석별 로그인 정보를 가져와서 로그인 여부를 표시만 해주는 함수
 
-		MyThread th = new MyThread(pan);	//다중체크를 막는 쓰레드
-		th.start();	// 다중체크 막는 쓰레드 실행
+		MyThread th = new MyThread(pan); // 다중체크를 막는 쓰레드
+		th.start(); // 다중체크 막는 쓰레드 실행
 
 		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("login_main.png"));
 
@@ -79,7 +83,7 @@ public class login extends JFrame implements ActionListener {
 			@Override
 			protected void paintComponent(Graphics g) {
 				g.drawImage(icon.getImage(), 0, 0, null);
-				setOpaque(false);	// 판넬 초기모양을 보이지않도록하는 것
+				setOpaque(false); // 판넬 초기모양을 보이지않도록하는 것
 				super.paintComponent(g);
 			}
 		};
@@ -143,7 +147,6 @@ public class login extends JFrame implements ActionListener {
 		log_btn.addActionListener(new LoginProcess());
 		join_btn.addActionListener(new memberadd());
 
-		
 		add(Leftpanel);
 		add(Rightpanel);
 		setVisible(true);
